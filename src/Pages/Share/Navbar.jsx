@@ -1,11 +1,14 @@
-import { NavLink } from "react-router-dom";
-
+import { Link, NavLink } from "react-router-dom";
+import { CiLogin } from "react-icons/ci";
+import { useState } from "react";
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  console.log(open);
   const menuItems = (
     <>
       <li>
         {" "}
-        <NavLink> Home </NavLink>{" "}
+        <NavLink to="/"> Home </NavLink>{" "}
       </li>
       <li>
         {" "}
@@ -56,8 +59,28 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <div className="navbar-end cursor-pointer">
-          <h2>Login</h2>
+        <div className="navbar-end cursor-pointer relative">
+          <CiLogin
+            onClick={() => setOpen(!open)}
+            className="font-bold text-2xl"
+          />
+          {open ? (
+            <div className=" absolute mt-40">
+              {" "}
+              <ul
+                tabIndex={0}
+                className="h-24 menu-sm dropdown-content border-2 border-red-700 mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li> Login </li>
+                <Link to="/register">
+                  {" "}
+                  <li> Register </li>
+                </Link>
+              </ul>{" "}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
