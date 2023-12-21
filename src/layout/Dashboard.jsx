@@ -1,6 +1,5 @@
-import { FaHouseMedical } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
-
+import { ImProfile } from "react-icons/im";
 const Dashboard = () => {
   const isAdmin = true;
   return (
@@ -46,15 +45,11 @@ const Dashboard = () => {
               <>
                 <li>
                   {" "}
-                  <NavLink to="/dashboard/adminHome">
-                    <FaHouseMedical /> AdminHome
+                  <NavLink to="/dashboard/profile">
+                    <ImProfile /> Profile
                   </NavLink>{" "}
                 </li>
 
-                <li>
-                  {" "}
-                  <NavLink to="/dashboard/allTests"> AllTest</NavLink>{" "}
-                </li>
                 <li>
                   {" "}
                   <NavLink to="/dashboard/addTest"> AddTask</NavLink>{" "}
@@ -62,11 +57,7 @@ const Dashboard = () => {
 
                 <li>
                   {" "}
-                  <NavLink to="/dashboard/allBanner"> AllBanner</NavLink>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <NavLink to="/dashboard/addBanner"> AddBanner</NavLink>{" "}
+                  <NavLink to="/dashboard/allBanner"> AllTask</NavLink>{" "}
                 </li>
               </>
             ) : (

@@ -20,7 +20,7 @@ const Navbar = () => {
       </li>
       <li>
         {" "}
-        <NavLink> Service </NavLink>{" "}
+        <NavLink to="/service"> Service </NavLink>{" "}
       </li>
       <li>
         {" "}
@@ -66,44 +66,17 @@ const Navbar = () => {
           <ul className=" space-x-4 menu-horizontal px-1 font-bold">
             {menuItems}
             {user?.email ? (
-              <Link to="dashboard">Dashboard</Link>
+              <>
+                <Link to="/dashboard/profile">Dashboard</Link>{" "}
+                <button onClick={handlerLogout}>LogOut</button>
+              </>
             ) : (
               <Link to="/login">Login</Link>
             )}
           </ul>
         </div>
         <div className="navbar-end cursor-pointer relative">
-          <CiLogin
-            onClick={() => setOpen(!open)}
-            className="font-bold text-2xl"
-          />
-          {open ? (
-            <div className=" absolute mt-40">
-              {" "}
-              <ul
-                tabIndex={0}
-                className="h-24 menu-sm dropdown-content border-2 border-red-700 mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                {user?.email ? (
-                  <button onClick={handlerLogout}>LogOut</button>
-                ) : (
-                  <>
-                    {" "}
-                    <Link to="/login">
-                      {" "}
-                      <li> Login </li>
-                    </Link>
-                    <Link to="/register">
-                      {" "}
-                      <li> Register </li>
-                    </Link>
-                  </>
-                )}
-              </ul>{" "}
-            </div>
-          ) : (
-            ""
-          )}
+          <CiLogin className="font-bold text-2xl" />
         </div>
       </div>
     </div>

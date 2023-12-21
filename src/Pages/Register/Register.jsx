@@ -3,22 +3,42 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { newUserCreate } = useContext(AuthContext);
+  const { newUserCreate, updateUserProfile } = useContext(AuthContext);
 
   const onSubmit = (data) => {
     console.log(data);
+    if (data.category === "Your Profession Name") {
+      return toast.error("Please Select Your Profession Name");
+    }
     newUserCreate(data.email, data.password)
       .then((result) => {
         console.log(result.user);
         toast.success("New User Create Successfully");
+        updateUserProfile(data.name, data.photoURL).then(() => {
+          toast.success("Update Your Name Successfully");
+
+          const userInfo = {
+            name: data?.name,
+            email: data?.email,
+            category: data?.category,
+          };
+
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              toast.success("Send Your Information in MongoDB");
+            }
+          });
+        });
       })
       .catch((error) => {
         toast.error(error.message);
@@ -65,6 +85,30 @@ const Register = () => {
                 {errors.photoURL && (
                   <span className="text-red-500">photo is required</span>
                 )}
+              </div>
+
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text text-[16px]">
+                    {" "}
+                    Your Profession Name
+                  </span>
+                </label>
+                <label className="input-group">
+                  <select
+                    name="category"
+                    {...register("category", { required: true })}
+                    className="select select-bordered w-full"
+                    required
+                  >
+                    <option defaultValue={"Your Profession Name"}>
+                      Your Profession Name{" "}
+                    </option>
+                    <option>Developers</option>
+                    <option>Corporate</option>
+                    <option>Bankers</option>
+                  </select>
+                </label>
               </div>
 
               <div className="form-control">
