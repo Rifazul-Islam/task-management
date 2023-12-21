@@ -1,9 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
 import { CiLogin } from "react-icons/ci";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  console.log(open);
+  const { logOut, user } = useContext(AuthContext);
+
+  const handlerLogout = () => {
+    logOut().then(() => {
+      toast.success("Logout Successfully");
+    });
+  };
   const menuItems = (
     <>
       <li>
@@ -57,6 +65,11 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className=" space-x-4 menu-horizontal px-1 font-bold">
             {menuItems}
+            {user?.email ? (
+              <Link to="dashboard">Dashboard</Link>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </ul>
         </div>
         <div className="navbar-end cursor-pointer relative">
@@ -71,11 +84,21 @@ const Navbar = () => {
                 tabIndex={0}
                 className="h-24 menu-sm dropdown-content border-2 border-red-700 mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li> Login </li>
-                <Link to="/register">
-                  {" "}
-                  <li> Register </li>
-                </Link>
+                {user?.email ? (
+                  <button onClick={handlerLogout}>LogOut</button>
+                ) : (
+                  <>
+                    {" "}
+                    <Link to="/login">
+                      {" "}
+                      <li> Login </li>
+                    </Link>
+                    <Link to="/register">
+                      {" "}
+                      <li> Register </li>
+                    </Link>
+                  </>
+                )}
               </ul>{" "}
             </div>
           ) : (

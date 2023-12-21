@@ -1,5 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
   const {
@@ -8,8 +11,18 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const { newUserCreate } = useContext(AuthContext);
+
   const onSubmit = (data) => {
     console.log(data);
+    newUserCreate(data.email, data.password)
+      .then((result) => {
+        console.log(result.user);
+        toast.success("New User Create Successfully");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   return (

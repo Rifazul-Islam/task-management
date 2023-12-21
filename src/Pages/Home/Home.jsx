@@ -1,10 +1,12 @@
+import Dynamic from "../Dynamic/Dynamic";
 import Banner from "./Banner";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      This is A Home Page
+
+      <Dynamic></Dynamic>
     </div>
   );
 };
