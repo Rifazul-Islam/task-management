@@ -31,7 +31,27 @@ const Dynamic = () => {
           </div>
         </>
       ) : (
-        "Not Found"
+        <>
+          {" "}
+          <div className="flex lg:flex-row flex-col gap-3">
+            <div className=" flex-grow">
+              <img
+                className="rounded-lg"
+                src="https://projectsly.com/images/task-management-app-screenshot-1.png?v=1691124479409199525"
+                alt=""
+              />
+            </div>
+            <div className="">
+              <h2 className="p-2 text-3xl font-bold text-blue-600">
+                {" "}
+                All Benefit Show{" "}
+              </h2>
+              <p className="text-[20px] text-zinc-700 lg:w-[700px] pt-3 p-2">
+                Please Login First
+              </p>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

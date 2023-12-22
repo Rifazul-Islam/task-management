@@ -7,6 +7,7 @@ import Dashboard from "../layout/Dashboard";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Service from "../Pages/Service/Service";
 import Profile from "../Pages/Dashboard/Profile/Profile";
+import AddTask from "../Pages/Dashboard/AddTask/AddTask";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "addTask",
+        element: <AddTask></AddTask>,
       },
     ],
   },

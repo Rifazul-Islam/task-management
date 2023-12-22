@@ -52,7 +52,7 @@ const Dashboard = () => {
 
                 <li>
                   {" "}
-                  <NavLink to="/dashboard/addTest"> AddTask</NavLink>{" "}
+                  <NavLink to="/dashboard/addTask"> AddTask</NavLink>{" "}
                 </li>
 
                 <li>
