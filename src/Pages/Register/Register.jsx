@@ -47,7 +47,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="hero min-h-screen ">
+      <div className="hero min-h-screen py-4">
         <div className="hero text-center">
           <div className="text-center "></div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 border-2">

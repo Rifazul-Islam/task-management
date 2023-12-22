@@ -25,21 +25,18 @@ const Navbar = () => {
           Home{" "}
         </NavLink>{" "}
       </li>
+
       <li>
         {" "}
         <NavLink
-          to="/service"
+          to="/contact"
           className={({ isActive }) =>
             isActive ? "border-b-2 border-red-600" : " "
           }
         >
           {" "}
-          Service{" "}
+          Contact{" "}
         </NavLink>{" "}
-      </li>
-      <li>
-        {" "}
-        <NavLink> Contact </NavLink>{" "}
       </li>
       <li>
         {" "}

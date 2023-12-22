@@ -12,6 +12,7 @@ import TaskManagement from "../Pages/Dashboard/TaskManageMent/TaskManagement";
 import AllTasks from "../Pages/Dashboard/AllTasks/AllTasks";
 import Update from "../Pages/Dashboard/Update/Update";
 import Blog from "../Pages/Blog/Blog";
+import Contact from "../Pages/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -35,13 +36,8 @@ const router = createBrowserRouter([
         element: <Blog></Blog>,
       },
       {
-        path: "/service",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <Service></Service>{" "}
-          </PrivateRoute>
-        ),
+        path: "/contact",
+        element: <Contact></Contact>,
       },
     ],
   },
