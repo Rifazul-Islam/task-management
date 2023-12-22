@@ -11,6 +11,7 @@ import AddTask from "../Pages/Dashboard/AddTask/AddTask";
 import TaskManagement from "../Pages/Dashboard/TaskManageMent/TaskManagement";
 import AllTasks from "../Pages/Dashboard/AllTasks/AllTasks";
 import Update from "../Pages/Dashboard/Update/Update";
+import Blog from "../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
         path: "/service",
@@ -63,6 +68,8 @@ const router = createBrowserRouter([
       {
         path: "update/:id",
         element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/update/${params.id}`),
       },
       {
         path: "taskManagement",

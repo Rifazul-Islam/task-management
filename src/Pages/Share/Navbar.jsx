@@ -1,10 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { CiLogin } from "react-icons/ci";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
   const { logOut, user } = useContext(AuthContext);
 
   const handlerLogout = () => {
@@ -16,11 +15,27 @@ const Navbar = () => {
     <>
       <li>
         {" "}
-        <NavLink to="/"> Home </NavLink>{" "}
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "border-b-2 border-red-600" : " "
+          }
+        >
+          {" "}
+          Home{" "}
+        </NavLink>{" "}
       </li>
       <li>
         {" "}
-        <NavLink to="/service"> Service </NavLink>{" "}
+        <NavLink
+          to="/service"
+          className={({ isActive }) =>
+            isActive ? "border-b-2 border-red-600" : " "
+          }
+        >
+          {" "}
+          Service{" "}
+        </NavLink>{" "}
       </li>
       <li>
         {" "}
@@ -28,7 +43,15 @@ const Navbar = () => {
       </li>
       <li>
         {" "}
-        <NavLink> Blog</NavLink>{" "}
+        <NavLink
+          to="blog"
+          className={({ isActive }) =>
+            isActive ? "border-b-2 border-red-600" : " "
+          }
+        >
+          {" "}
+          Blog
+        </NavLink>{" "}
       </li>
     </>
   );
