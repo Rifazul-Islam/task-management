@@ -54,10 +54,17 @@ const Dashboard = () => {
                   {" "}
                   <NavLink to="/dashboard/addTask"> AddTask</NavLink>{" "}
                 </li>
+                <li>
+                  {" "}
+                  <NavLink to="/dashboard/allTasks"> AllTasks</NavLink>{" "}
+                </li>
 
                 <li>
                   {" "}
-                  <NavLink to="/dashboard/allBanner"> AllTask</NavLink>{" "}
+                  <NavLink to="/dashboard/taskManagement">
+                    {" "}
+                    TaskManagement
+                  </NavLink>{" "}
                 </li>
               </>
             ) : (

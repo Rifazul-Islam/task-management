@@ -8,6 +8,9 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Service from "../Pages/Service/Service";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import AddTask from "../Pages/Dashboard/AddTask/AddTask";
+import TaskManagement from "../Pages/Dashboard/TaskManageMent/TaskManagement";
+import AllTasks from "../Pages/Dashboard/AllTasks/AllTasks";
+import Update from "../Pages/Dashboard/Update/Update";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +55,18 @@ const router = createBrowserRouter([
       {
         path: "addTask",
         element: <AddTask></AddTask>,
+      },
+      {
+        path: "allTasks",
+        element: <AllTasks></AllTasks>,
+      },
+      {
+        path: "update/:id",
+        element: <Update></Update>,
+      },
+      {
+        path: "taskManagement",
+        element: <TaskManagement></TaskManagement>,
       },
     ],
   },
